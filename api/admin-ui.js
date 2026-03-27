@@ -86,11 +86,13 @@ export default function handler(req, res) {
                     <p class="text-slate-400 text-sm font-medium">Active Endpoints</p>
                     <h2 id="active-endpoints" class="text-4xl font-bold mt-1">--</h2>
                 </div>
-                <div class="glass lg:col-span-2 p-6 rounded-2xl">
+                <div class="glass lg:col-span-2 p-6 rounded-2xl overflow-hidden">
                     <div class="flex items-center justify-between mb-2">
                         <p class="text-slate-400 text-sm font-medium">7-Day Traffic</p>
                     </div>
-                    <canvas id="traffic-chart" style="height: 100px; width: 100%;"></canvas>
+                    <div class="h-32 w-full">
+                        <canvas id="traffic-chart"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -280,7 +282,7 @@ export default function handler(req, res) {
 
         function updateChart(history) {
             const ctx = document.getElementById('traffic-chart').getContext('2d');
-            const data = history.reverse();
+            const data = [...history].reverse();
             
             if (chart) chart.destroy();
             chart = new Chart(ctx, {
@@ -291,10 +293,9 @@ export default function handler(req, res) {
                         label: 'Hits',
                         data: data.map(d => d.hits),
                         borderColor: '#2dd4bf',
-                        borderWidth: 3,
+                        borderWidth: 2,
                         tension: 0.4,
                         fill: true,
-                        backgroundColor: ctx.createLinearGradient(0, 0, 0, 100),
                         pointRadius: 0
                     }]
                 },
@@ -310,7 +311,7 @@ export default function handler(req, res) {
             });
             // Apply gradient after init
             const grad = ctx.createLinearGradient(0, 0, 0, 100);
-            grad.addColorStop(0, 'rgba(45, 212, 191, 0.2)');
+            grad.addColorStop(0, 'rgba(45, 212, 191, 0.15)');
             grad.addColorStop(1, 'transparent');
             chart.data.datasets[0].backgroundColor = grad;
             chart.update();
