@@ -11,16 +11,22 @@ import path from 'path';
  *       200:
  *         description: Profile data
  */
+import { trackRequest, getPortfolioData } from "./_tracker.js";
+
 export default async function handler(req, res) {
+  await trackRequest('/me');
   try {
     const filePath = path.join(process.cwd(), 'data', 'me.json');
-    const data = await fs.readFile(filePath, 'utf8');
+    const localData = JSON.parse(await fs.readFile(filePath, 'utf8'));
+    
+    // Fetch from Firestore, fallback to local JSON
+    const data = await getPortfolioData("configs", "me", localData);
     
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
     
-    res.status(200).send(data);
+    res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to read data' });
   }

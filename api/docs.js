@@ -1,4 +1,7 @@
-export default function handler(req, res) {
+import { trackRequest } from "./_tracker.js";
+
+export default async function handler(req, res) {
+  await trackRequest('/docs');
   // Hardcoded endpoint data to ensure 100% reliability in Vercel serverless environments
   // where the file system scanner (swagger-jsdoc) often fails to find source files.
   const endpoints = [

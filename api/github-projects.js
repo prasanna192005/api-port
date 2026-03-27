@@ -8,7 +8,10 @@
  *       200:
  *         description: Array of all public repositories
  */
+import { trackRequest } from "./_tracker.js";
+
 export default async function handler(req, res) {
+  await trackRequest('/projects/all');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Content-Type', 'application/json');
 

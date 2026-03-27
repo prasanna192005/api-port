@@ -8,7 +8,10 @@
  *       200:
  *         description: Welcome message and links to documentation.
  */
-export default function handler(req, res) {
+import { trackRequest } from "./_tracker.js";
+
+export default async function handler(req, res) {
+  await trackRequest('/');
   res.setHeader('Access-Control-Allow-Origin', '*');
   const userAgent = (req.headers['user-agent'] || '').toLowerCase();
 

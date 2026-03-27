@@ -11,11 +11,16 @@ import path from 'path';
  *       200:
  *         description: Projects data
  */
+import { trackRequest, getPortfolioData } from "./_tracker.js";
+
 export default async function handler(req, res) {
+  await trackRequest('/projects');
   try {
     const filePath = path.join(process.cwd(), 'data', 'projects.json');
-    const fileContent = await fs.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContent);
+    const localData = JSON.parse(await fs.readFile(filePath, 'utf8'));
+    
+    // Fetch from Firestore, fallback to local JSON
+    const data = await getPortfolioData("configs", "projects", localData);
     
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');

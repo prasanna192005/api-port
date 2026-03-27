@@ -8,7 +8,10 @@
  *       200:
  *         description: Stats data
  */
+import { trackRequest } from "./_tracker.js";
+
 export default async function handler(req, res) {
+  await trackRequest('/stats');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Content-Type', 'application/json');
 
