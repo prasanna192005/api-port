@@ -8,13 +8,20 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Content-Type', 'application/json');
 
-  const passcode = req.headers['x-admin-passcode'] || req.query.passcode;
+  const passcode = req.headers['x-admin-passcode'] || req.query.passcode || '';
   const adminPasscode = process.env.ADMIN_PASSCODE ? String(process.env.ADMIN_PASSCODE).trim() : '846884';
 
-  console.log(`[Admin Auth] Received: "${passcode}", Expected: "${adminPasscode}"`);
+  console.log(`[Admin Auth] Received: "${passcode}" (len: ${passcode.length}), Expected: "${adminPasscode}" (len: ${adminPasscode.length})`);
 
-  if (passcode !== adminPasscode) {
-    return res.status(401).json({ error: 'Unauthorized: Invalid passcode.' });
+  if (passcode.trim() !== adminPasscode) {
+    return res.status(401).json({ 
+      error: 'Unauthorized: Invalid passcode.',
+      _debug: { 
+        received: passcode, 
+        expected: "Check your terminal logs for the expected value",
+        env_status: process.env.ADMIN_PASSCODE ? 'Set' : 'Using Fallback'
+      }
+    });
   }
 
   const { action } = req.query;
