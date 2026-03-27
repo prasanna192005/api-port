@@ -1,0 +1,14 @@
+[
+  {
+    "company": "Freelance",
+    "role": "Full Stack Developer",
+    "period": "2024 - Present",
+    "description": "Building modern web applications and APIs for various clients using React and Node.js."
+  },
+  {
+    "company": "Tech Internship",
+    "role": "Frontend Intern",
+    "period": "2023 - 2024",
+    "description": "Developed dynamic UI components and contributed to frontend architecture."
+  }
+]

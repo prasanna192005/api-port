@@ -1,0 +1,20 @@
+{
+  "name": "Prasanna",
+  "title": "Full Stack Developer",
+  "location": "Maharashtra, India",
+  "bio": "I build fast, reliable, and user-friendly web applications. Passionate about learning new technologies and solving complex problems.",
+  "skills": [
+    "Node.js",
+    "React",
+    "TailwindCSS",
+    "Vercel",
+    "PostgreSQL",
+    "TypeScript",
+    "Firebase"
+  ],
+  "openToWork": true,
+  "links": {
+    "github": "https://github.com/prasanna192005",
+    "vercel": "https://vercel.com/prasanna192005s-projects"
+  }
+}

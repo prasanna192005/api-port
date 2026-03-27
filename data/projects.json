@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "ObservoAI-Barcalys-Hack-o-Hire-2025",
+    "description": "AI-powered observability platform that monitors APIs across cloud and on-prem environments, detects anomalies with ML (ARIMA, LSTM, Isolation Forest), performs LLM-based root cause analysis, and delivers real-time alerts with Grafana dashboards and AI phone notifications.",
+    "tech": [
+      "ai",
+      "anomaly-detection",
+      "api-monitoring",
+      "grafana",
+      "obsevability"
+    ],
+    "url": "https://github.com/prasanna192005/ObservoAI-Barcalys-Hack-o-Hire-2025",
+    "live": null,
+    "stars": 0
+  },
+  {
+    "id": 2,
+    "name": "My-Buddy",
+    "description": "AI-powered collaborative learning platform with custom test generation, real-time notes, messaging, and a LangChain RAG assistant for personalized study and doubt solving.",
+    "tech": [
+      "ai",
+      "edtech",
+      "langchain",
+      "learning",
+      "react"
+    ],
+    "url": "https://github.com/prasanna192005/My-Buddy",
+    "live": null,
+    "stars": 0
+  },
+  {
+    "id": 3,
+    "name": "seedhe-cmd",
+    "description": "CLI tool that provides instant Git, Docker, Linux, React, Next.js, and Node.js cheatsheets with AI-powered command suggestions using the Gemini API.",
+    "tech": [
+      "cli",
+      "cli-development",
+      "node",
+      "npm",
+      "terminal"
+    ],
+    "url": "https://github.com/prasanna192005/seedhe-cmd",
+    "live": null,
+    "stars": 0
+  },
+  {
+    "id": 4,
+    "name": "anchor19",
+    "description": "No description available.",
+    "tech": [
+      "TypeScript"
+    ],
+    "url": "https://github.com/prasanna192005/anchor19",
+    "live": "https://anchor19.vercel.app",
+    "stars": 0
+  },
+  {
+    "id": 5,
+    "name": "project-akshar",
+    "description": "No description available.",
+    "tech": [
+      "TypeScript"
+    ],
+    "url": "https://github.com/prasanna192005/project-akshar",
+    "live": "https://akshar19.vercel.app",
+    "stars": 0
+  },
+  {
+    "id": 6,
+    "name": "Pulse-free-ppt-polls",
+    "description": "Real-time, anonymous polling platform built with Next.js and Firebase—no participant limits, no paywalls, just fast and engaging polls for meetings, classrooms, and events.",
+    "tech": [
+      "TypeScript"
+    ],
+    "url": "https://github.com/prasanna192005/Pulse-free-ppt-polls",
+    "live": "https://pulse19.vercel.app",
+    "stars": 0
+  }
+]

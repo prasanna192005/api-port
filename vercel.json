@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/api/index.js" },
+    { "source": "/me", "destination": "/api/me.js" },
+    { "source": "/projects", "destination": "/api/projects.js" },
+    { "source": "/projects/all", "destination": "/api/github-projects.js" },
+    { "source": "/projects/:id", "destination": "/api/projects.js" },
+    { "source": "/experience", "destination": "/api/experience.js" },
+    { "source": "/contact", "destination": "/api/contact.js" },
+    { "source": "/now", "destination": "/api/now.js" },
+    { "source": "/stats", "destination": "/api/stats.js" },
+    { "source": "/docs", "destination": "/api/docs.js" }
+  ]
+}
