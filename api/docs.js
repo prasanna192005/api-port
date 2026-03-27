@@ -1,41 +1,28 @@
-import swaggerJsdoc from 'swagger-jsdoc';
-import path from 'path';
-
 export default function handler(req, res) {
-  const options = {
-    definition: {
-      openapi: '3.0.0',
-      info: {
-        title: 'Prasanna API Portfolio',
-        version: '1.0.0',
-      },
-      servers: [
-        { url: 'https://prasanna-dev-api.vercel.app' },
-        { url: 'http://localhost:3000' }
-      ]
-    },
-    apis: [path.join(process.cwd(), 'api', '*.js')],
-  };
+  // Hardcoded endpoint data to ensure 100% reliability in Vercel serverless environments
+  // where the file system scanner (swagger-jsdoc) often fails to find source files.
+  const endpoints = [
+    { method: 'GET', route: '/me', summary: 'Personal profile, bio, and skills.' },
+    { method: 'GET', route: '/projects', summary: 'Curated list of premium projects.' },
+    { method: 'GET', route: '/projects/all', summary: 'Live repositories fetched from GitHub API.' },
+    { method: 'GET', route: '/experience', summary: 'Work history and educational background.' },
+    { method: 'GET', route: '/stats', summary: 'Live GitHub metrics (stars, followers, etc).' },
+    { method: 'GET', route: '/contact', summary: 'Contact information and social links.' },
+    { method: 'GET', route: '/now', summary: 'What I am currently focused on.' }
+  ];
 
-  const swaggerSpec = swaggerJsdoc(options);
-  const paths = swaggerSpec.paths || {};
-  
-  // Dynamically build the endpoint cards using our parsed JSDoc
   let endpointsHtml = '';
-  for (const [route, methods] of Object.entries(paths)) {
-    for (const [method, details] of Object.entries(methods)) {
-      const methodUpper = method.toUpperCase();
-      const methodClass = methodUpper === 'GET' ? 'method-get' : 'method-post';
-      endpointsHtml += `
-        <div class="endpoint">
-          <div class="endpoint-header">
-            <span class="method ${methodClass}">${methodUpper}</span>
-            <span class="route">${route}</span>
-          </div>
-          <p class="description">${details.summary || details.description || 'Returns structured JSON data.'}</p>
+  for (const endpoint of endpoints) {
+    const methodClass = endpoint.method === 'GET' ? 'method-get' : 'method-post';
+    endpointsHtml += `
+      <div class="endpoint">
+        <div class="endpoint-header">
+          <span class="method ${methodClass}">${endpoint.method}</span>
+          <span class="route">${endpoint.route}</span>
         </div>
-      `;
-    }
+        <p class="description">${endpoint.summary}</p>
+      </div>
+    `;
   }
 
   // Pure, dependency-free, completely custom minimalist HTML/CSS
