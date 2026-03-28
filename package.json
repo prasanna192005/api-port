@@ -1,11 +1,11 @@
 {
-  "name": "api-portfolio",
+  "name": "@prasanna192005/portfolio",
   "version": "1.0.0",
   "description": "A developer portfolio served entirely as a REST API.",
-  "main": "api/me.js",
+  "main": "cli/index.js",
   "type": "module",
   "bin": {
-    "prasanna": "./cli/index.js"
+    "prasanna": "cli/index.js"
   },
   "scripts": {
     "start": "node ./cli/index.js"
@@ -13,6 +13,9 @@
   "keywords": [],
   "author": "Prasanna",
   "license": "ISC",
+  "files": [
+    "cli"
+  ],
   "dependencies": {
     "@inquirer/prompts": "^8.3.2",
     "boxen": "^8.0.0",

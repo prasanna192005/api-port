@@ -11,7 +11,7 @@ import path from 'path';
  *       200:
  *         description: Profile data
  */
-import { trackRequest, getPortfolioData } from "./_tracker.js";
+import { trackRequest, getPortfolioData, sendPrettyJSON } from "./_tracker.js";
 
 export default async function handler(req, res) {
   await trackRequest('/me');
@@ -22,12 +22,8 @@ export default async function handler(req, res) {
     // Fetch from Firestore, fallback to local JSON
     const data = await getPortfolioData("configs", "me", localData);
     
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Content-Type', 'application/json');
-    
-    res.status(200).json(data);
+    sendPrettyJSON(res, data);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to read data' });
+    sendPrettyJSON(res, { error: 'Failed to read data' }, 500);
   }
 }

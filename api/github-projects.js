@@ -8,12 +8,10 @@
  *       200:
  *         description: Array of all public repositories
  */
-import { trackRequest } from "./_tracker.js";
+import { trackRequest, sendPrettyJSON } from "./_tracker.js";
 
 export default async function handler(req, res) {
   await trackRequest('/projects/all');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', 'application/json');
 
   const githubUser = 'prasanna192005';
   const token = process.env.GITHUB_TOKEN;
@@ -49,11 +47,11 @@ export default async function handler(req, res) {
       updatedAt: repo.updated_at
     }));
 
-    res.status(200).json(formattedProjects);
+    sendPrettyJSON(res, formattedProjects);
   } catch (error) {
-    res.status(500).json({ 
+    sendPrettyJSON(res, { 
       error: 'Failed to fetch github projects', 
       details: error.message 
-    });
+    }, 500);
   }
 }

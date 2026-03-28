@@ -55,3 +55,12 @@ export async function updatePortfolioData(collectionName, key, data) {
     updatedAt: new Date().toISOString()
   }, { merge: true });
 }
+
+/**
+ * Sends a pretty-printed JSON response.
+ */
+export function sendPrettyJSON(res, data, status = 200) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  return res.status(status).send(JSON.stringify(data, null, 2));
+}

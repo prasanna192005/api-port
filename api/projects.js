@@ -11,7 +11,7 @@ import path from 'path';
  *       200:
  *         description: Projects data
  */
-import { trackRequest, getPortfolioData } from "./_tracker.js";
+import { trackRequest, getPortfolioData, sendPrettyJSON } from "./_tracker.js";
 
 export default async function handler(req, res) {
   await trackRequest('/projects');
@@ -22,9 +22,6 @@ export default async function handler(req, res) {
     // Fetch from Firestore, fallback to local JSON
     const data = await getPortfolioData("configs", "projects", localData);
     
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Content-Type', 'application/json');
-    
     // Check if an ID was passed in query or path (rewrites)
     // The rewrite passes /projects/:id, but Vercel exposes it via req.query.id
     const { id } = req.query;
@@ -32,13 +29,13 @@ export default async function handler(req, res) {
     if (id) {
       const project = data.find(p => p.id === parseInt(id, 10));
       if (!project) {
-        return res.status(404).json({ error: 'Project not found' });
+        return sendPrettyJSON(res, { error: 'Project not found' }, 404);
       }
-      return res.status(200).json(project);
+      return sendPrettyJSON(res, project);
     }
     
-    res.status(200).json(data);
+    sendPrettyJSON(res, data);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to read data' });
+    sendPrettyJSON(res, { error: 'Failed to read data' }, 500);
   }
 }

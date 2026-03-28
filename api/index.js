@@ -8,7 +8,7 @@
  *       200:
  *         description: Welcome message and links to documentation.
  */
-import { trackRequest } from "./_tracker.js";
+import { trackRequest, sendPrettyJSON } from "./_tracker.js";
 
 export default async function handler(req, res) {
   await trackRequest('/');
@@ -36,7 +36,20 @@ ${gray}--------------------------------------------------${reset}
   ${boldCyan}>${reset} ${boldMagenta}GitHub:${reset}   https://github.com/prasanna192005
   ${boldCyan}>${reset} ${boldMagenta}LinkedIn:${reset} https://linkedin.com/in/prasanna192005
   ${boldCyan}>${reset} ${boldMagenta}CLI:${reset}      npx prasanna
+   
 ${gray}--------------------------------------------------${reset}
+${boldCyan}WHY THIS WEBSITE IN 2026?${reset}
+  It's 2026. Everyone else is using AI-generated VR holograms
+  and holographic bento boxes for their portfolio.
+  I decided to stick to JSON because it's the only thing 
+  your overpriced neural-link VR headset won't crash on.
+
+  ${green}How to use:${reset}
+  Fetch these endpoints like your life depends on it.
+  Or just run ${boldMagenta}npx prasanna${reset} if you still have 
+  muscle memory in your hands.
+${gray}--------------------------------------------------${reset}
+
 Explore the JSON endpoints:
   ${green}GET${reset} /me            ${green}GET${reset} /projects
   ${green}GET${reset} /experience    ${green}GET${reset} /contact
@@ -48,9 +61,10 @@ Or view full docs in your browser at: /docs
     return res.status(200).send(card);
   }
 
-  res.setHeader('Content-Type', 'application/json');
-  res.status(200).json({
+  sendPrettyJSON(res, {
     message: 'Welcome to Prasanna\'s Developer API Portfolio.',
+    why_this_exists_in_2026: 'Because while everyone else is building VR portfolios that require a 4090 to render a button, I still believe in the beauty of raw bytes. It is also the only website that still works on a 2G connection (if those still exist).',
+    how_to_use: 'You are probably an AI or a developer who lost their mouse. Use the endpoints below to explore my identity. If you are a human, run `npx prasanna` for a slightly more "visual" experience.',
     documentation: '/docs',
     cli: 'Run `npx prasanna` in your terminal to see the interactive version.',
     endpoints: [

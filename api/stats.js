@@ -8,12 +8,10 @@
  *       200:
  *         description: Stats data
  */
-import { trackRequest } from "./_tracker.js";
+import { trackRequest, sendPrettyJSON } from "./_tracker.js";
 
 export default async function handler(req, res) {
   await trackRequest('/stats');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', 'application/json');
 
   const githubUser = 'prasanna192005';
   const token = process.env.GITHUB_TOKEN;
@@ -46,7 +44,7 @@ export default async function handler(req, res) {
       totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
     }
 
-    res.status(200).json({
+    sendPrettyJSON(res, {
       followers: userData.followers,
       publicRepos: userData.public_repos,
       totalStars,
@@ -54,9 +52,9 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    res.status(500).json({ 
+    sendPrettyJSON(res, { 
       error: 'Failed to fetch external stats', 
       details: error.message 
-    });
+    }, 500);
   }
 }
