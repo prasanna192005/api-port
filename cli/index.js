@@ -3,13 +3,102 @@
 import chalk from 'chalk';
 import boxen from 'boxen';
 import ora from 'ora';
-import { select, Separator } from '@inquirer/prompts';
+import { select, Separator, input as prompt } from '@inquirer/prompts';
 import figlet from 'figlet';
 import gradient from 'gradient-string';
 
 const args = process.argv.slice(2);
 const isLocal = args.includes('--local');
 const BASE_URL = isLocal ? 'http://localhost:3000' : 'https://prasanna-api19.vercel.app';
+
+/**
+ * 🔐 THE BREACH (Hacker Mastermind)
+ * A professional-grade CLI hacking simulation.
+ */
+async function startBreach() {
+  const CODE_LENGTH = 4;
+  const secret = Math.floor(Math.random() * Math.pow(10, CODE_LENGTH)).toString().padStart(CODE_LENGTH, '0');
+  const attempts = 6;
+  let currentAttempt = 0;
+  let solved = false;
+
+  console.clear();
+  console.log(gradient.retro.multiline(figlet.textSync(' THE BREACH ', { font: 'Small' })));
+  console.log(chalk.dim(' Firewall Strength: ') + chalk.yellow('MEDIUM') + chalk.dim(' | Encryption: ') + chalk.green('DECIMAL-SHIFT-9\n'));
+
+  console.log(boxen(
+    chalk.cyan(' INTRUSION DETECTED. SYSTEM SECURITY CHALLENGE INITIATED. ') + 
+    chalk.dim(`\n Guess the ${CODE_LENGTH}-digit DECIMAL code to bypass the firewall. `) +
+    chalk.dim('\n You have 6 attempts before permanent lockout. '),
+    { padding: 1, borderStyle: 'double', borderColor: 'yellow' }
+  ));
+
+  while (currentAttempt < attempts && !solved) {
+    const guess = await prompt({
+      message: chalk.bold.green(` [Attempt ${currentAttempt + 1}/${attempts}] Enter ${CODE_LENGTH}-digit CODE: `),
+      validate: (val) => new RegExp(`^[0-9]{${CODE_LENGTH}}$`).test(val) || `Entry must be a valid ${CODE_LENGTH}-digit Number.`
+    });
+
+    const upperGuess = guess.toUpperCase();
+    currentAttempt++;
+
+    if (upperGuess === secret) {
+      solved = true;
+      break;
+    }
+
+    // Mastermind Logic
+    let correctSymbols = 0;
+    let correctPositions = 0;
+    const secretArr = secret.split('');
+    const guessArr = upperGuess.split('');
+    const secretMarked = new Array(CODE_LENGTH).fill(false);
+    const guessMarked = new Array(CODE_LENGTH).fill(false);
+
+    // 1. Check correct positions
+    for (let i = 0; i < CODE_LENGTH; i++) {
+        if (guessArr[i] === secretArr[i]) {
+            correctPositions++;
+            secretMarked[i] = true;
+            guessMarked[i] = true;
+        }
+    }
+
+    // 2. Check correct symbols in wrong positions
+    for (let i = 0; i < CODE_LENGTH; i++) {
+        if (!guessMarked[i]) {
+            for (let j = 0; j < CODE_LENGTH; j++) {
+                if (!secretMarked[j] && guessArr[i] === secretArr[j]) {
+                    correctSymbols++;
+                    secretMarked[j] = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    console.log(chalk.dim(' ├─ Analysis: ') + chalk.yellow(`${correctSymbols + correctPositions} correct symbols`) + 
+                chalk.dim(' | ') + chalk.green(`${correctPositions} in correct positions\n`));
+  }
+
+  if (solved) {
+    console.log(gradient.cristal('\n [ SUCCESS ] Firewalls bypassed. Accessing secure data protocols... '));
+    await new Promise(r => setTimeout(r, 1000));
+    console.log(boxen(
+        chalk.bold.green(' ACCESS GRANTED ') + 
+        chalk.dim('\n Welcome, Administrator. ') +
+        chalk.dim('\n DECODED SECRET: ') + chalk.white.bold(secret) +
+        chalk.dim('\n TIP: ') + chalk.italic(' "True power lies in the raw data, not the UI slop." '),
+        { padding: 1, borderStyle: 'round', borderColor: 'green' }
+    ));
+  } else {
+    console.log(chalk.red.bold('\n [ FAILURE ] Multiple failed attempts. Connection purged. '));
+    console.log(chalk.dim(` The correct sequence was: `) + chalk.white.bold(secret));
+  }
+
+  await new Promise(r => setTimeout(r, 3000));
+  console.clear();
+}
 
 // Helper to print animated ASCII logo
 function displayLogo(text) {
@@ -65,12 +154,17 @@ async function startInteractiveMode() {
         { name: '💻 Projects', value: 'projects' },
         { name: '💼 Experience', value: 'experience' },
         { name: '📨 Contact', value: 'contact' },
+        { name: '🔐 The Breach (GAME)', value: 'breach' },
         new Separator(),
         { name: '🚪 Exit', value: 'exit' },
       ],
     });
 
     console.log(''); // spacer
+
+    if (action === 'breach') {
+      await startBreach();
+    }
 
     if (action === 'about') {
       const output = [];
@@ -143,10 +237,11 @@ async function startInteractiveMode() {
     } else {
       console.log('');
       // Small pause before returning to prompt
-      await new Promise(r => setTimeout(r, 600));
+      if (action !== 'breach') await new Promise(r => setTimeout(r, 600));
     }
   }
 }
+
 
 startInteractiveMode().catch((err) => {
   console.error(chalk.red('\nAn unexpected error occurred:'), err.message);
