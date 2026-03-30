@@ -23,11 +23,11 @@ This is a **blisteringly fast, zero-bullshit, raw JSON API portfolio** that runs
 There is nothing to "install", configure, or clone. 
 As long as you have Node.js installed on your machine, just pop open your terminal and run:
 
-\`\`\`bash
+```bash
 npx prasanna
-\`\`\`
+```
 
-*(Yes, I legally own the NPM package **\`prasanna\`**. Be jealous.)*
+*(Yes, I legally own the NPM package **`prasanna`**. Be jealous.)*
 
 You will immediately be greeted with a fully interactive CLI dashboard where you can browse my projects, experience, and contact information using nothing but your arrow keys. It reaches out to my live edge API in real-time.
 
@@ -37,17 +37,17 @@ You will immediately be greeted with a fully interactive CLI dashboard where you
 
 If you are a robot, an AI agent, a web crawler, or just someone who genuinely prefers reading JSON strings over human interfaces (I won't judge), you can hit my production API directly:
 
-- \`GET https://prasanna-api19.vercel.app/\` - Welcome payload
-- \`GET https://prasanna-api19.vercel.app/me\` - Identity & Skills
-- \`GET https://prasanna-api19.vercel.app/projects\` - Top repositories
-- \`GET https://prasanna-api19.vercel.app/experience\` - Professional timeline
-- \`GET https://prasanna-api19.vercel.app/stats\` - Live GitHub stats
-- \`GET https://prasanna-api19.vercel.app/now\` - What I'm currently doing
+- `GET https://prasanna-api19.vercel.app/` - Welcome payload
+- `GET https://prasanna-api19.vercel.app/me` - Identity & Skills
+- `GET https://prasanna-api19.vercel.app/projects` - Top repositories
+- `GET https://prasanna-api19.vercel.app/experience` - Professional timeline
+- `GET https://prasanna-api19.vercel.app/stats` - Live GitHub stats
+- `GET https://prasanna-api19.vercel.app/now` - What I'm currently doing
 
 Want it right in your terminal without the polished CLI wrapper? 
-\`\`\`bash
+```bash
 curl -H "Accept: application/json" https://prasanna-api19.vercel.app/me
-\`\`\`
+```
 
 ---
 
@@ -55,7 +55,7 @@ curl -H "Accept: application/json" https://prasanna-api19.vercel.app/me
 
 Because I hate databases, this entire API is fully stateless. It uses a custom **Git CMS**.
 
-When I want to update my skills, my secure `/admin` dashboard actually constructs a payload and uses a GitHub Personal Access Token to literally \`git commit\` the new JSON file to the repo on my behalf, triggering an instant Vercel redeployment. 
+When I want to update my skills, my secure `/admin` dashboard actually constructs a payload and uses a GitHub Personal Access Token to literally `git commit` the new JSON file to the repo on my behalf, triggering an instant Vercel redeployment. 
 
 *Zero databases. Full version control. Infinite speed.*
 
