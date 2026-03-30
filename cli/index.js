@@ -39,10 +39,11 @@ async function fetchAPI(endpoint) {
 async function startInteractiveMode() {
   const spinner = ora('Waking up the API servers...').start();
   
-  const [me, projects, contact] = await Promise.all([
+  const [me, projects, contact, experience] = await Promise.all([
     fetchAPI('/me'),
     fetchAPI('/projects'),
-    fetchAPI('/contact')
+    fetchAPI('/contact'),
+    fetchAPI('/experience')
   ]);
 
   if (!me) {
@@ -62,6 +63,7 @@ async function startInteractiveMode() {
       choices: [
         { name: '👤 About Me', value: 'about' },
         { name: '💻 Projects', value: 'projects' },
+        { name: '💼 Experience', value: 'experience' },
         { name: '📨 Contact', value: 'contact' },
         new Separator(),
         { name: '🚪 Exit', value: 'exit' },
@@ -101,6 +103,24 @@ async function startInteractiveMode() {
       
       console.log(boxen(output.join('\n').trim(), {
         padding: 1, borderStyle: 'round', borderColor: 'magenta', title: ' Top Repositories ', titleAlignment: 'center'
+      }));
+    }
+
+    if (action === 'experience') {
+      const output = [];
+      if (experience && experience.length) {
+        experience.forEach((exp, idx) => {
+          output.push(`${chalk.bold.yellow(exp.role)} at ${chalk.bold.white(exp.company)}`);
+          output.push(`${chalk.gray(exp.period)}`);
+          output.push(`${exp.description}`);
+          if (idx < experience.length - 1) output.push(chalk.dim('---'));
+        });
+      } else {
+        output.push(chalk.italic('No experience found.'));
+      }
+      
+      console.log(boxen(output.join('\n'), {
+        padding: 1, borderStyle: 'round', borderColor: 'yellow', title: ' Career Path ', titleAlignment: 'center'
       }));
     }
 

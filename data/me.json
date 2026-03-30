@@ -2,7 +2,7 @@
   "name": "Prasanna Pandharikar",
   "title": "Full Stack Engineer (Terminal Edition)",
   "location": "Mumbai, Maharashtra, India",
-  "bio": "I build ultra-fast, database-free, latency-optimized API applications. In a world full of bloated WebGL loading screens, I ship raw JSON payloads and scalable system architectures.",
+  "bio": "I build fast, scalable systems and API-first applications. I enjoy working close to the fundamentals — focusing on performance, clean architecture, and delivering experiences that are simple, efficient, and actually responsive.",
   "skills": [
     "C & C++",
     "Python & Java",
@@ -17,9 +17,10 @@
     "Docker & Kubernetes",
     "AWS & Cloudflare",
     "Vercel Edge & Serverless",
+    "Prometheus, Grafana, Loki, Tempo",
     "CI/CD Pipelines",
     "RESTful APIs & GraphQL",
-    "Git CMS",
+    "Git",
     "Terminal Sorcery"
   ],
   "openToWork": true,

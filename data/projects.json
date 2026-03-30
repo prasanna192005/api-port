@@ -31,6 +31,20 @@
   },
   {
     "id": 3,
+    "name": "project-akshar",
+    "description": "A high-performance typing game platform designed for competitive practice and skill building.",
+    "tech": [
+      "TypeScript",
+      "React",
+      "Framer Motion",
+      "TailwindCSS"
+    ],
+    "url": "https://github.com/prasanna192005/project-akshar",
+    "live": "https://akshar19.vercel.app",
+    "stars": 0
+  },
+  {
+    "id": 4,
     "name": "seedhe-cmd",
     "description": "CLI tool that provides instant Git, Docker, Linux, React, Next.js, and Node.js cheatsheets with AI-powered command suggestions using the Gemini API.",
     "tech": [
@@ -45,25 +59,16 @@
     "stars": 0
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "anchor19",
-    "description": "No description available.",
+    "description": "A secure and minimalist authentication and project anchoring dashboard.",
     "tech": [
-      "TypeScript"
+      "TypeScript",
+      "Next.js",
+      "Vercel"
     ],
     "url": "https://github.com/prasanna192005/anchor19",
     "live": "https://anchor19.vercel.app",
-    "stars": 0
-  },
-  {
-    "id": 5,
-    "name": "project-akshar",
-    "description": "No description available.",
-    "tech": [
-      "TypeScript"
-    ],
-    "url": "https://github.com/prasanna192005/project-akshar",
-    "live": "https://akshar19.vercel.app",
     "stars": 0
   },
   {
@@ -71,7 +76,9 @@
     "name": "Pulse-free-ppt-polls",
     "description": "Real-time, anonymous polling platform built with Next.js and Firebase—no participant limits, no paywalls, just fast and engaging polls for meetings, classrooms, and events.",
     "tech": [
-      "TypeScript"
+      "TypeScript",
+      "Firebase",
+      "Next.js"
     ],
     "url": "https://github.com/prasanna192005/Pulse-free-ppt-polls",
     "live": "https://pulse19.vercel.app",
