@@ -11,6 +11,7 @@
     { "source": "/contact", "destination": "/api/contact.js" },
     { "source": "/now", "destination": "/api/now.js" },
     { "source": "/stats", "destination": "/api/stats.js" },
-    { "source": "/docs", "destination": "/api/docs.js" }
+    { "source": "/docs", "destination": "/api/docs.js" },
+    { "source": "/(.*)", "destination": "/api/404.js" }
   ]
 }

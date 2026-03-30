@@ -1,47 +1,52 @@
-# 🚀 Prasanna's API Portfolio
+# 🖥️ Prasanna's Terminal Identity
 
-> "Treat the developer as a public API."
+> **"Why the hell would you build a command-line interface portfolio in 2026?"**
 
-A serverless, API-first developer portfolio deployed on **Vercel**. Instead of a standard UI, this project serves structured JSON data for personal identity, projects, and stats. It also includes an interactive **terminal CLI**.
+Welcome to the future. Everyone else is shipping auto-generated, GPU-melting WebGL AI slop that requires an RTX 4090 and 3 GB of JavaScript just to render a "Hire Me" button. 
 
-## 🌐 Live API
+I decided to go in the exact opposite direction.
 
-Main Endpoint: [https://prasanna-dev-api.vercel.app/](https://prasanna-dev-api.vercel.app/)
-Interactive Docs: `/docs`
-
-### 🪄 The `curl` Magic
-If you're in a terminal, just run:
-```bash
-curl https://prasanna-dev-api.vercel.app
-```
-*It detects `curl` and returns a beautifully coloured ANSI business card.*
-
-## 💻 Interactive CLI
-
-Experience the portfolio in high-fidelity from your terminal:
-```bash
-npx prasanna
-```
-
-## 🛠️ Tech Stack
-
-- **Runtime**: Node.js (ESM)
-- **Deployment**: Vercel Serverless Functions
-- **Documentation**: Custom bespoke light-mode UI (Redoc-inspired)
-- **CLI Utilities**: `@inquirer/prompts`, `chalk`, `boxen`, `figlet`, `gradient-string`
-
-## 📡 Endpoints
-
-| Endpoint | Description |
-| :--- | :--- |
-| `GET /me` | Personal profile, bio, and skills |
-| `GET /projects` | Curated list of my best projects |
-| `GET /projects/all` | Live repository list fetched from GitHub |
-| `GET /stats` | Live GitHub stats (repos, stars, followers) |
-| `GET /contact` | Links and social pointers |
-| `GET /now` | Current status/focus |
-| `GET /docs` | Full Interactive API Reference |
+This is a **blisteringly fast, zero-bullshit, raw JSON API portfolio** that runs directly in your terminal. No loading spinners. No annoying scroll-jacking. No cookie banners. Just raw, unadulterated bytes fetched directly from Vercel via a stateless Git CMS backend.
 
 ---
 
-Built with ⚡ by [Prasanna](https://github.com/prasanna192005)
+## 🚀 How to Execute Me
+
+If you have Node.js installed, just pop open your terminal and run:
+
+\`\`\`bash
+npx prasanna
+\`\`\`
+
+*(Yes, I legally own the NPM package **\`prasanna\`**. Be jealous.)*
+
+You will be greeted with a fully interactive CLI dashboard where you can browse my projects, experience, and contact information using nothing but your arrow keys. 
+
+---
+
+## 🔌 The Raw API
+
+If you are a robot, a web crawler, or just someone who genuinely prefers reading JSON strings (I won't judge), you can hit my production API directly:
+
+- \`GET https://prasanna-api19.vercel.app/\` - Welcome payload
+- \`GET https://prasanna-api19.vercel.app/me\` - Identity constraints
+- \`GET https://prasanna-api19.vercel.app/projects\` - Top repositories
+- \`GET https://prasanna-api19.vercel.app/stats\` - Live GitHub statistics 
+
+Want it right in your terminal without the CLI wrapper? 
+\`\`\`bash
+curl -H "Accept: application/json" https://prasanna-api19.vercel.app/me
+\`\`\`
+
+---
+
+## 🛠️ Architecture
+
+Because I hate databases, this entire API is fully stateless. It uses a **Git CMS**.
+When I want to update my skills, my secure `/admin` dashboard actually constructs a payload and uses a GitHub Personal Access Token to literally `git commit` the new JSON file to the repo, triggering an instant Vercel redeployment. 
+
+*Zero databases. Full version control. Infinite speed.*
+
+---
+
+**Made with 💻 and an absurd amount of sarcasm.**

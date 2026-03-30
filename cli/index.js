@@ -9,7 +9,7 @@ import gradient from 'gradient-string';
 
 const args = process.argv.slice(2);
 const isLocal = args.includes('--local');
-const BASE_URL = isLocal ? 'http://localhost:3000' : 'https://prasanna-dev-api.vercel.app';
+const BASE_URL = isLocal ? 'http://localhost:3000' : 'https://prasanna-api19.vercel.app';
 
 // Helper to print animated ASCII logo
 function displayLogo(text) {

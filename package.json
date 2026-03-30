@@ -1,5 +1,5 @@
 {
-  "name": "@prasanna192005/portfolio",
+  "name": "prasanna",
   "version": "1.0.0",
   "description": "A developer portfolio served entirely as a REST API.",
   "main": "cli/index.js",
