@@ -1,14 +1,14 @@
 [
   {
-    "company": "Freelance",
-    "role": "Full Stack Developer",
-    "period": "2024 - Present",
-    "description": "Building modern web applications and APIs for various clients using React and Node.js."
+    "company": "edept",
+    "role": "Machine Learning Intern",
+    "period": "Jan 2026 - Present",
+    "description": "Teaching machines to be smarter while debugging why they still act like toddlers. Building ML models and somehow making them behave inside real-world web apps and APIs."
   },
   {
-    "company": "Tech Internship",
-    "role": "Frontend Intern",
-    "period": "2023 - 2024",
-    "description": "Developed dynamic UI components and contributed to frontend architecture."
+    "company": "edept",
+    "role": "Hackathon Problem Setter and Curriculum Design Intern",
+    "period": "Aug 2025 - Dec 2025",
+    "description": "Designed hackathon problems that looked innocent but ruined sleep cycles. Created curricula that made people question their life choices (and eventually learn something useful)."
   }
 ]
