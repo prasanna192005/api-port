@@ -44,7 +44,7 @@ export default async function handler(req, res) {
       totalStars = reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
     }
 
-    sendPrettyJSON(res, {
+    sendPrettyJSON(req, res, {
       followers: userData.followers,
       publicRepos: userData.public_repos,
       totalStars,
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    sendPrettyJSON(res, { 
+    sendPrettyJSON(req, res, { 
       error: 'Failed to fetch external stats', 
       details: error.message 
     }, 500);

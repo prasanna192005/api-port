@@ -25,21 +25,13 @@ export default function handler(req, res) {
 </head>
 <body class="min-h-screen overflow-x-hidden">
 
-    <!-- Login Overlay -->
-    <div id="login-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md transition-opacity">
-        <div class="glass p-8 rounded-2xl w-full max-w-md text-center shadow-2xl">
-            <div class="mb-6 inline-flex p-4 bg-teal-500/10 rounded-full">
-                <i data-lucide="lock" class="w-8 h-8 text-teal-500"></i>
-            </div>
-            <h1 class="text-2xl font-bold mb-2">Restricted Access</h1>
-            <p class="text-slate-400 mb-8">Enter your admin passcode to proceed.</p>
-            <input type="password" id="passcode-input" 
-                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center text-lg tracking-widest uppercase"
-                placeholder="••••••">
-            <button onclick="login()" class="w-full accent-gradient hover:opacity-90 py-3 rounded-xl font-semibold transition-all shadow-lg shadow-teal-500/20">
-                Unlock Dashboard
-            </button>
+    <!-- Lock Overlay (DevTools Unlock) -->
+    <div id="lock-overlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950/95 backdrop-blur-md transition-opacity duration-500">
+        <div class="mb-6 inline-flex p-5 bg-rose-500/10 rounded-full animate-pulse">
+            <i data-lucide="lock" class="w-10 h-10 text-rose-500"></i>
         </div>
+        <h1 class="text-2xl font-mono text-rose-500 font-bold mb-2 tracking-widest">[ SYSTEM LOCKED ]</h1>
+        <p class="text-slate-500 font-mono mt-4 opacity-70">Hint: Inspect the console.</p>
     </div>
 
     <!-- Main Dashboard -->
@@ -150,6 +142,36 @@ export default function handler(req, res) {
         let activeFile = '';
         let chart = null;
 
+        // DevTools Message
+        console.log("%c[ ERROR: 401 UNAUTHORIZED ]", "color: #f43f5e; font-size: 20px; font-weight: bold;");
+        console.log("%cThe payload interface is currently locked.", "color: #94a3b8; font-size: 14px;");
+        console.log("To gain access, use the global command: %cunlock('your_passcode')", "color: #2dd4bf; font-family: monospace; font-size: 14px;");
+
+        // Global Unlock Function (Hacker Mode)
+        window.unlock = async function(code) {
+            const isSilent = localStorage.getItem('admin_passcode') === code;
+            try {
+                const res = await fetch(\`/api/admin-api?action=getStats&passcode=\${code}\`);
+                if (res.ok) {
+                    currentPasscode = code;
+                    localStorage.setItem('admin_passcode', code);
+                    document.getElementById('lock-overlay').classList.add('opacity-0', 'pointer-events-none');
+                    document.getElementById('main-content').classList.remove('hidden');
+                    setTimeout(() => document.getElementById('main-content').classList.add('opacity-100'), 100);
+                    if (!isSilent) console.log("%c[ ACCESS GRANTED ] Welcome back, Dada.", "color: #22c55e; font-size: 16px; font-weight: bold;");
+                    init();
+                    return "Connecting to Git CMS...";
+                } else {
+                    if (!isSilent) console.error("Access Denied: Invalid passcode signature.");
+                    localStorage.removeItem('admin_passcode');
+                    return "Authentication Failed.";
+                }
+            } catch (err) {
+                if (!isSilent) console.error("Access Denied: Connection offline.");
+                return "Connection Error.";
+            }
+        };
+
         function showToast(msg, isError = false) {
             const toast = document.getElementById('toast');
             const message = document.getElementById('toast-message');
@@ -166,27 +188,7 @@ export default function handler(req, res) {
             }, 3000);
         }
 
-        async function login() {
-            const input = document.getElementById('passcode-input');
-            const code = input.value;
-            
-            try {
-                const res = await fetch(\`/api/admin-api?action=getStats&passcode=\${code}\`);
-                if (res.ok) {
-                    currentPasscode = code;
-                    localStorage.setItem('admin_passcode', code);
-                    document.getElementById('login-overlay').classList.add('opacity-0', 'pointer-events-none');
-                    document.getElementById('main-content').classList.remove('hidden');
-                    setTimeout(() => document.getElementById('main-content').classList.add('opacity-100'), 100);
-                    init();
-                } else {
-                    showToast('Invalid passcode. Try again.', true);
-                    input.value = '';
-                }
-            } catch (err) {
-                showToast('Connection error.', true);
-            }
-        }
+        // Login logic moved to window.unlock()
 
         function logout() {
             localStorage.removeItem('admin_passcode');
@@ -320,8 +322,9 @@ export default function handler(req, res) {
         // Auto-login from local storage
         const saved = localStorage.getItem('admin_passcode');
         if (saved) {
-            document.getElementById('passcode-input').value = saved;
-            login();
+            unlock(saved);
+        } else {
+            lucide.createIcons();
         }
     </script>
 </body>

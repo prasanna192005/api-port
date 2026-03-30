@@ -29,13 +29,13 @@ export default async function handler(req, res) {
     if (id) {
       const project = data.find(p => p.id === parseInt(id, 10));
       if (!project) {
-        return sendPrettyJSON(res, { error: 'Project not found' }, 404);
+        return sendPrettyJSON(req, res, { error: 'Project not found' }, 404);
       }
-      return sendPrettyJSON(res, project);
+      return sendPrettyJSON(req, res, project);
     }
     
-    sendPrettyJSON(res, data);
+    sendPrettyJSON(req, res, data);
   } catch (error) {
-    sendPrettyJSON(res, { error: 'Failed to read data' }, 500);
+    sendPrettyJSON(req, res, { error: 'Failed to read data' }, 500);
   }
 }

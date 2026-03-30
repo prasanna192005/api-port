@@ -22,8 +22,10 @@ export default async function handler(req, res) {
     // Fetch from Firestore, fallback to local JSON
     const data = await getPortfolioData("configs", "contact", localData);
     
-    sendPrettyJSON(res, data);
+    sendPrettyJSON(req, res, data);
   } catch (error) {
-    sendPrettyJSON(res, { error: 'Failed to read data' }, 500);
+    sendPrettyJSON(req, res, { error: 'Failed to read data' }, 500);
   }
 }
+// console.log('EMAIL:', process.env.FIREBASE_ADMIN_CLIENT_EMAIL)
+// console.log('KEY exists:', !!process.env.FIREBASE_ADMIN_PRIVATE_KEY)

@@ -47,9 +47,9 @@ export default async function handler(req, res) {
       updatedAt: repo.updated_at
     }));
 
-    sendPrettyJSON(res, formattedProjects);
+    sendPrettyJSON(req, res, formattedProjects);
   } catch (error) {
-    sendPrettyJSON(res, { 
+    sendPrettyJSON(req, res, { 
       error: 'Failed to fetch github projects', 
       details: error.message 
     }, 500);
