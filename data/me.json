@@ -1,20 +1,29 @@
 {
   "name": "Prasanna Pandharikar",
-  "title": "Full Stack Developer",
+  "title": "Full Stack Engineer (Terminal Edition)",
   "location": "Mumbai, Maharashtra, India",
-  "bio": "I build fast, reliable, and user-friendly web applications. Passionate about learning new technologies and solving complex problems.",
+  "bio": "I build ultra-fast, database-free, latency-optimized API applications. In a world full of bloated WebGL loading screens, I ship raw JSON payloads and scalable system architectures.",
   "skills": [
-    "Node.js",
-    "React",
+    "C & C++",
+    "Python & Java",
+    "TypeScript / JavaScript",
+    "Node.js & Express",
+    "Next.js / React",
+    "HTML & Vanilla CSS",
     "TailwindCSS",
-    "Vercel",
-    "PostgreSQL",
-    "TypeScript",
-    "Firebase"
+    "Machine Learning & AI",
+    "LLMs & GenAI Engineering",
+    "PostgreSQL & MongoDB",
+    "Docker & Kubernetes",
+    "AWS & Cloudflare",
+    "Vercel Edge & Serverless",
+    "CI/CD Pipelines",
+    "RESTful APIs & GraphQL",
+    "Git CMS",
+    "Terminal Sorcery"
   ],
   "openToWork": true,
   "links": {
-    "github": "https://github.com/prasanna192005",
-    "vercel": "https://vercel.com/prasanna192005s-projects"
+    "github": "https://github.com/prasanna192005"
   }
 }
