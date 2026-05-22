@@ -1,66 +1,62 @@
 <div align="center">
-  
-# 🖥️ Prasanna's Terminal Identity
 
-[![npm version](https://badge.fury.io/js/prasanna.svg)](https://badge.fury.io/js/prasanna)
-[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/website?url=https%3A%2F%2Fapi.prasanna19.xyz%2Fme&up_message=online&up_color=green&down_color=red)](https://api.prasanna19.xyz/me)
+# prasanna
 
-> **"Why the hell would you build a command-line interface portfolio in 2026?"**
+[![npm](https://badge.fury.io/js/prasanna.svg)](https://badge.fury.io/js/prasanna)
+[![MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT)
+[![API](https://img.shields.io/website?url=https%3A%2F%2Fapi.prasanna19.xyz%2Fme&up_message=online&up_color=red)](https://api.prasanna19.xyz/me)
+
+*It's 2026. Every portfolio is a Three.js particle explosion with an AI chatbot that hallucinates my job history.*
+
+*This one runs in your terminal.*
 
 </div>
 
-Welcome to the future. Everyone else is shipping auto-generated, GPU-melting WebGL AI slop that requires an RTX 4090 and 3 GB of JavaScript just to render a "Hire Me" button. 
-
-I decided to go in the exact opposite direction.
-
-This is a **blisteringly fast, zero-bullshit, raw JSON API portfolio** that runs directly in your terminal. No loading spinners. No annoying scroll-jacking. No cookie banners. Just raw, unadulterated bytes fetched directly from Vercel via a stateless Git CMS backend.
-
 ---
-
-## 🚀 Usage
-
-There is nothing to "install", configure, or clone. 
-As long as you have Node.js installed on your machine, just pop open your terminal and run:
 
 ```bash
 npx prasanna
 ```
 
-*(Yes, I legally own the NPM package **`prasanna`**. Be jealous.)*
-
-You will immediately be greeted with a fully interactive CLI dashboard where you can browse my projects, experience, and contact information using nothing but your arrow keys. It reaches out to my live edge API in real-time.
+No install. No browser. No 4MB of React to render a name and three bullet points.  
+Just arrow keys, live data, and your terminal emulator doing what it was built to do.
 
 ---
 
-## 🔌 The Raw API
+## Playground
 
-If you are a robot, an AI agent, a web crawler, or just someone who genuinely prefers reading JSON strings over human interfaces (I won't judge), you can hit my production API directly:
+If you launch the CLI, you also get access to the interactive playground containing five developer-themed terminal puzzles:
 
-- `GET https://api.prasanna19.xyz/` - Welcome payload
-- `GET https://api.prasanna19.xyz/me` - Identity & Skills
-- `GET https://api.prasanna19.xyz/projects` - Top repositories
-- `GET https://api.prasanna19.xyz/experience` - Professional timeline
-- `GET https://api.prasanna19.xyz/stats` - Live GitHub stats
-- `GET https://api.prasanna19.xyz/now` - What I'm currently doing
+- **Packet Routing**: A pathfinding puzzle where you route network packets avoiding firewalls (featuring newly added ultra-hard Levels 5 & 6).
+- **Cyber Defuse**: A boolean logic gate simulator where you toggle inputs to match target outputs.
+- **Docker Scale**: A turn-based DevOps simulator managing container allocations under real-time traffic spikes without crashing resource limits.
+- **DNS Lookup**: A subnetting math speedrun calculating NetIDs, masks, and broadcast addresses.
+- **The Breach**: A mastermind-style passcode hacking logic game.
 
-Want it right in your terminal without the polished CLI wrapper? 
+---
+
+## API
+
+The same data, rawer:
+
+| Route        | Returns          |
+| ------------ | ---------------- |
+| `/me`        | Identity & skills |
+| `/projects`  | Top repositories |
+| `/experience`| Timeline         |
+| `/stats`     | Live GitHub stats |
+| `/now`       | What I'm building |
+
 ```bash
-curl -H "Accept: application/json" https://api.prasanna19.xyz/me
+curl https://api.prasanna19.xyz/me
 ```
 
 ---
 
-## 🛠️ Architecture
+## Architecture
 
-Because I hate databases, this entire API is fully stateless. It uses a custom **Git CMS**.
-
-When I want to update my skills, my secure `/admin` dashboard actually constructs a payload and uses a GitHub Personal Access Token to literally `git commit` the new JSON file to the repo on my behalf, triggering an instant Vercel redeployment. 
-
-*Zero databases. Full version control. Infinite speed.*
+No database. Updates go through an `/admin` panel that commits JSON to GitHub via PAT → instant Vercel redeploy. Git is the CMS. The whole thing is stateless, versioned, and faster than anything running on a Postgres free tier.
 
 ---
 
-<div align="center">
-  <b>Made with 💻 and an absurd amount of sarcasm.</b>
-</div>
+<div align="center"><sub>Built by Prasanna · MIT</sub></div>
