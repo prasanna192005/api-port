@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/prasanna.svg)](https://badge.fury.io/js/prasanna)
 [![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/website?url=https%3A%2F%2Fprasanna-api19.vercel.app%2Fme&up_message=online&up_color=green&down_color=red)](https://prasanna-api19.vercel.app/me)
+[![API Status](https://img.shields.io/website?url=https%3A%2F%2Fapi.prasanna19.xyz%2Fme&up_message=online&up_color=green&down_color=red)](https://api.prasanna19.xyz/me)
 
 > **"Why the hell would you build a command-line interface portfolio in 2026?"**
 
@@ -37,16 +37,16 @@ You will immediately be greeted with a fully interactive CLI dashboard where you
 
 If you are a robot, an AI agent, a web crawler, or just someone who genuinely prefers reading JSON strings over human interfaces (I won't judge), you can hit my production API directly:
 
-- `GET https://prasanna-api19.vercel.app/` - Welcome payload
-- `GET https://prasanna-api19.vercel.app/me` - Identity & Skills
-- `GET https://prasanna-api19.vercel.app/projects` - Top repositories
-- `GET https://prasanna-api19.vercel.app/experience` - Professional timeline
-- `GET https://prasanna-api19.vercel.app/stats` - Live GitHub stats
-- `GET https://prasanna-api19.vercel.app/now` - What I'm currently doing
+- `GET https://api.prasanna19.xyz/` - Welcome payload
+- `GET https://api.prasanna19.xyz/me` - Identity & Skills
+- `GET https://api.prasanna19.xyz/projects` - Top repositories
+- `GET https://api.prasanna19.xyz/experience` - Professional timeline
+- `GET https://api.prasanna19.xyz/stats` - Live GitHub stats
+- `GET https://api.prasanna19.xyz/now` - What I'm currently doing
 
 Want it right in your terminal without the polished CLI wrapper? 
 ```bash
-curl -H "Accept: application/json" https://prasanna-api19.vercel.app/me
+curl -H "Accept: application/json" https://api.prasanna19.xyz/me
 ```
 
 ---

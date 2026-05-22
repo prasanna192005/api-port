@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   const userAgent = (req.headers['user-agent'] || '').toLowerCase();
 
   if (userAgent.includes('curl')) {
-    const card = figlet.textSync('PRASANNA', { font: 'Slant' });
+    const card = figlet.textSync('PRASANNA', { font: 'Standard', horizontalLayout: 'fitted' });
     const welcome = `
 ${chalk.cyan(card)}
 Welcome to the Developer API Portfolio (v2.0.26)
